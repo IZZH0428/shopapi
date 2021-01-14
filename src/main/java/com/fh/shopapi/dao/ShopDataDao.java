@@ -26,4 +26,6 @@ public interface ShopDataDao {
     @Update("update t_data set name = #{name}, nameCH=#{nameCH},typeId=#{typeId}" +
             ",type=#{type},isSKU=#{isSKU},updateDate = #{updateDate},author=#{author} where id =#{id}")
     void update(ShopData shopData);
+    @Update("update t_data set isDel =#{isDel},updateDate=#{updateDate} where id=#{id}")
+    void del(ShopData shopData);
 }

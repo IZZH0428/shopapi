@@ -10,4 +10,6 @@ public interface ShopDataService {
     Integer add(ShopData shopData);
 
     void update(ShopData shopData);
+
+    void del(ShopData shopData);
 }

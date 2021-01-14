@@ -60,4 +60,18 @@ public class ShopDataController {
         shopDataService.update(shopData);
         return ReponseData.success(null);
     }
+    /*       删除
+       路径   http://localhost:8080/api/shopData/del
+       post请求
+       参数:id
+       返回值"
+       status": 200,
+       "info": "处理成功",
+       "data": null
+   */
+    @PostMapping("del")
+    public  ReponseData del(ShopData shopData){
+        shopDataService.del(shopData);
+        return ReponseData.success(null);
+    }
 }

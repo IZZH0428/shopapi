@@ -42,4 +42,11 @@ public class ShopDataServiceimpl implements ShopDataService {
         shopData.setUpdateDate(new Date());
         shopDataDao.update(shopData);
     }
+
+    @Override
+    public void del(ShopData shopData) {
+        shopData.setIsDel(1);
+        shopData.setUpdateDate(new Date());
+        shopDataDao.del(shopData);
+    }
 }
