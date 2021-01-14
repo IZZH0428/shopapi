@@ -12,4 +12,6 @@ public interface ShopDataService {
     void update(ShopData shopData);
 
     void del(ShopData shopData);
+
+    ShopData queryByid(Integer id);
 }

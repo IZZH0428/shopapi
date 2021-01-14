@@ -49,4 +49,9 @@ public class ShopDataServiceimpl implements ShopDataService {
         shopData.setUpdateDate(new Date());
         shopDataDao.del(shopData);
     }
+
+    @Override
+    public ShopData queryByid(Integer id) {
+        return shopDataDao.queryByid(id);
+    }
 }

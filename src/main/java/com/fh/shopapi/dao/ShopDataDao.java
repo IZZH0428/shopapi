@@ -28,4 +28,6 @@ public interface ShopDataDao {
     void update(ShopData shopData);
     @Update("update t_data set isDel =#{isDel},updateDate=#{updateDate} where id=#{id}")
     void del(ShopData shopData);
+    @Select("select * from t_data where id=#{id}")
+    ShopData queryByid(Integer id);
 }

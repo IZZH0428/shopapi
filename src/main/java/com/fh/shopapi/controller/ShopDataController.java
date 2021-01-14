@@ -74,4 +74,27 @@ public class ShopDataController {
         shopDataService.del(shopData);
         return ReponseData.success(null);
     }
+    /*       回显
+ 路径   http://localhost:8080/api/shopData/queryByid
+ post请求
+参数:id
+ 返回值"
+ status": 200,
+ "info": "处理成功",
+ "data":  "id": ,
+     "name": "",
+     "bandE": "",
+     "imgpath": "",
+     "bandDesc": "",
+     "ord": ,
+     "isdel": ,
+     "createDate": "",
+     "updateDate": ,
+     "author": ""
+     */
+    @PostMapping("queryByid")
+    public ReponseData queryByid(Integer id){
+        ShopData shopData  =shopDataService.queryByid(id);
+        return ReponseData.success(shopData);
+    }
 }
