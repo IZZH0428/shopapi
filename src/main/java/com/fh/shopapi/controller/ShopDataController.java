@@ -3,11 +3,9 @@ package com.fh.shopapi.controller;
 import com.fh.shopapi.entity.po.ShopData;
 import com.fh.shopapi.entity.vo.PageParam2;
 import com.fh.shopapi.entity.vo.PageResult;
+import com.fh.shopapi.entity.vo.ReponseData;
 import com.fh.shopapi.service.ShopDataService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -31,5 +29,20 @@ public class ShopDataController {
     public  PageResult<ShopData> getData(PageParam2 param){
         PageResult<ShopData> rs = shopDataService.getData(param);
         return rs;
+    }
+      /*      新增
+    路径   http://localhost:8080/api/shopData/add
+    post请求
+   参数:name,nameCH,typeId,type,isSKU,isDel,author
+    返回值"
+    status": 200,
+    "info": "处理成功",
+    "data": id
+
+        */
+    @PostMapping("add")
+    public ReponseData add(ShopData shopData){
+        Integer  id=    shopDataService.add(shopData);
+        return ReponseData.success(id);
     }
 }

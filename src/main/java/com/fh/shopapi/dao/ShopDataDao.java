@@ -3,6 +3,8 @@ package com.fh.shopapi.dao;
 import com.fh.shopapi.entity.po.Brand;
 import com.fh.shopapi.entity.po.ShopData;
 import com.fh.shopapi.entity.vo.PageParam2;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -16,4 +18,8 @@ public interface ShopDataDao {
             " <if test='name != null and name != &quot;%null%&quot;'>  and name  like #{name}</if>" +
             "  limit #{startIndex},#{limit} </script>")
     List<ShopData> queryDateByPage(PageParam2 param);
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
+    @Insert("insert into t_data (name,nameCH,typeId,type,isSKU,isDel,createDate,author) value " +
+            "                  (#{name},#{nameCH},#{typeId},#{type},#{isSKU},#{isDel},#{createDate},#{author})")
+    void add(ShopData shopData);
 }

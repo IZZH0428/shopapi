@@ -9,6 +9,7 @@ import com.fh.shopapi.service.ShopDataService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,5 +27,13 @@ public class ShopDataServiceimpl implements ShopDataService {
         //构建 layui  table 需要的数据{code：0，msg："",data:[],count:}
         PageResult<ShopData> rs=new PageResult<>(count,data);
         return rs;
+    }
+
+    @Override
+    public Integer add(ShopData shopData) {
+        shopData.setCreateDate(new Date());
+        shopData.setIsDel(0);
+        shopDataDao.add(shopData);
+        return shopData.getId();
     }
 }
