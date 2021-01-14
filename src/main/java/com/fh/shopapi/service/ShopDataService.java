@@ -8,4 +8,6 @@ public interface ShopDataService {
     PageResult<ShopData> getData(PageParam2 param);
 
     Integer add(ShopData shopData);
+
+    void update(ShopData shopData);
 }

@@ -36,4 +36,10 @@ public class ShopDataServiceimpl implements ShopDataService {
         shopDataDao.add(shopData);
         return shopData.getId();
     }
+
+    @Override
+    public void update(ShopData shopData) {
+        shopData.setUpdateDate(new Date());
+        shopDataDao.update(shopData);
+    }
 }

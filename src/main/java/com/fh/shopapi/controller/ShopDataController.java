@@ -33,7 +33,7 @@ public class ShopDataController {
       /*      新增
     路径   http://localhost:8080/api/shopData/add
     post请求
-   参数:name,nameCH,typeId,type,isSKU,isDel,author
+   参数:name,nameCH,typeId,type,isSKU,author
     返回值"
     status": 200,
     "info": "处理成功",
@@ -44,5 +44,20 @@ public class ShopDataController {
     public ReponseData add(ShopData shopData){
         Integer  id=    shopDataService.add(shopData);
         return ReponseData.success(id);
+    }
+
+    /*       修改
+          路径   http://localhost:8080/api/shopData/update
+          post请求
+         参数:name,nameCH,typeId,type,isSKU,author
+          返回值"
+          status": 200,
+          "info": "处理成功",
+          "data": null
+      */
+    @PostMapping("update")
+    public ReponseData update(ShopData shopData){
+        shopDataService.update(shopData);
+        return ReponseData.success(null);
     }
 }
