@@ -56,7 +56,7 @@ public class TypeController {
 
     @GetMapping("getDataByid")
     public ReponseData getDataByid(Integer id){
-        List<Type> rs = typeService.getDataByid(id);
+        Type rs = typeService.getDataByid(id);
         return ReponseData.success(rs);
     }
 /*3  新增分类

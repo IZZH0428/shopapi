@@ -26,5 +26,5 @@ public interface TypeDao {
             " where id=#{id} </script>")
     void update(Type type);
     @Select("select * from t_type where id =#{id}")
-    List<Type> getDataById(Integer id);
+    Type getDataById(Integer id);
 }

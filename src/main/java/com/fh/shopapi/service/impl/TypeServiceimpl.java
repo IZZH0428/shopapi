@@ -40,7 +40,7 @@ public class TypeServiceimpl implements TypeService {
     }
 
     @Override
-    public List<Type> getDataByid(Integer id) {
+    public Type getDataByid(Integer id) {
         return typeDao.getDataById(id);
     }
 }

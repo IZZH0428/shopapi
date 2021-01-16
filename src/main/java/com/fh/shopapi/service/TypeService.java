@@ -14,5 +14,5 @@ public interface TypeService {
 
     void update(Type type);
 
-    List<Type> getDataByid(Integer id);
+    Type getDataByid(Integer id);
 }
