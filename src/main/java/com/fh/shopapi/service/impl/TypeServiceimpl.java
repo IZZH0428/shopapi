@@ -38,4 +38,9 @@ public class TypeServiceimpl implements TypeService {
         type.setUpdateDate(new Date());
         typeDao.update(type);
     }
+
+    @Override
+    public List<Type> getDataByid(Integer id) {
+        return typeDao.getDataById(id);
+    }
 }

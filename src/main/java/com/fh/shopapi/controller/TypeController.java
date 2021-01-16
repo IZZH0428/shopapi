@@ -44,6 +44,21 @@ public class TypeController {
         List<Type> rs = typeService.getDataByPid(pid);
         return ReponseData.success(rs);
     }
+    /*2    查询指定id的数据
+
+    路径   http://localhost:8080/api/type/getDataByid
+
+    get请求
+
+    参数    Pid
+
+    返回值   {"code":200,"message":"提示",data:[{*}]}*/
+
+    @GetMapping("getDataByid")
+    public ReponseData getDataByid(Integer id){
+        List<Type> rs = typeService.getDataByid(id);
+        return ReponseData.success(rs);
+    }
 /*3  新增分类
 
     路径   http://localhost:8080/api/type/add

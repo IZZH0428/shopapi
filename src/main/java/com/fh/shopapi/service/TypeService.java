@@ -13,4 +13,6 @@ public interface TypeService {
     Integer add(Type type);
 
     void update(Type type);
+
+    List<Type> getDataByid(Integer id);
 }
