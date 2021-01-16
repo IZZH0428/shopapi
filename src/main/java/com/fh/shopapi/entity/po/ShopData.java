@@ -1,5 +1,7 @@
 package com.fh.shopapi.entity.po;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class ShopData {
@@ -18,9 +20,9 @@ public class ShopData {
     private Integer isSKU;//   是否为sku属性
 
     private Integer isDel;//    逻辑删除
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;//
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updateDate;//
 
     private String author;//  操作人
