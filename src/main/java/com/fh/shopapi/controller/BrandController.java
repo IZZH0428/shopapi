@@ -5,14 +5,17 @@ import com.fh.shopapi.entity.vo.PageParam1;
 import com.fh.shopapi.entity.vo.PageResult;
 import com.fh.shopapi.entity.vo.ReponseData;
 import com.fh.shopapi.service.BrandService;
+import com.fh.shopapi.utils.OssFileUtils_ZZH;
 import com.fh.shopapi.utils.UploadDown;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/brand/")
@@ -111,12 +114,14 @@ public class BrandController {
         "data": url
         */
     @PostMapping("upload")
-    public ReponseData upload(MultipartFile img, HttpServletRequest request){
-
-        Map<String, String> map = UploadDown.upload(img, request, "imgFiles");
-        String path=map.get("filePath");
-        String Qpath="http://192.168.1.32:8080/"+path;
-        return ReponseData.success(Qpath);
+    public ReponseData upload(MultipartFile img) throws IOException {
+        //处理新名称
+        String originalFilename = img.getOriginalFilename();
+        //防止中文引起的错误
+        String newName= UUID.randomUUID().toString()+originalFilename.substring(originalFilename.lastIndexOf("."));
+        //存储路径
+        newName="imgs/"+newName;
+        return ReponseData.success(OssFileUtils_ZZH.uploadFile(img.getInputStream(),newName));
     }
 
 }
