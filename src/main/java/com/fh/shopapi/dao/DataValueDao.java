@@ -17,6 +17,6 @@ public interface DataValueDao {
     DataValue getDataById(Integer id);
     @Update("update t_datavalue set value=#{value},valueCH=#{valueCH} where id=#{id} ")
     void update(DataValue dataValue);
-    @Update("update  t_datavalue isDel = 1 where id =#{id}")
+    @Update("update  t_datavalue set isDel = 1 where id =#{id}")
     void del(Integer id);
 }
