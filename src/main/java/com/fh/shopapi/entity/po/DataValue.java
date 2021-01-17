@@ -5,6 +5,15 @@ public class DataValue {
     private  String value;
     private  String valueCH;
     private  Integer attId;
+    private  Integer isDel;
+
+    public Integer getIsDel() {
+        return isDel;
+    }
+
+    public void setIsDel(Integer isDel) {
+        this.isDel = isDel;
+    }
 
     public Integer getId() {
         return id;
