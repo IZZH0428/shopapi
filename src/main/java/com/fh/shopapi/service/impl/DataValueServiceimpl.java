@@ -27,4 +27,9 @@ public class DataValueServiceimpl implements DataValueService {
     public DataValue getDataById(Integer id) {
         return valueDao.getDataById(id);
     }
+
+    @Override
+    public void update(DataValue dataValue) {
+        valueDao.update(dataValue);
+    }
 }

@@ -46,15 +46,29 @@ public class DataValueController {
       /*   1    回显
     路径   http://localhost:8080/api/value/getDataById
     get请求
-   参数:value valueCH attId
+   参数:id
     返回值
         status": 200,
         "info": "处理成功",
-        "data":
+        "data":{}
         */
       @GetMapping("getDataById")
     public ReponseData getDataById(Integer id){
           DataValue rs =dataValues.getDataById(id);
           return  ReponseData.success(rs);
+      }
+      /*   1    修改
+    路径   http://localhost:8080/api/value/update
+    get请求
+   参数:value valueCH id
+    返回值
+        status": 200,
+        "info": "处理成功",
+        "data":
+        */
+      @PostMapping("update")
+      public ReponseData update(DataValue dataValue){
+          dataValues.update(dataValue);
+          return ReponseData.success(null);
       }
 }

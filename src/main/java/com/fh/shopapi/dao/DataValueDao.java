@@ -3,6 +3,7 @@ package com.fh.shopapi.dao;
 import com.fh.shopapi.entity.po.DataValue;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface DataValueDao {
     void add(DataValue dataValue);
     @Select("select * from t_datavalue where id = #{id}")
     DataValue getDataById(Integer id);
+    @Update("update t_datavalue set value=#{value},valueCH=#{valueCH} where id=#{id} ")
+    void update(DataValue dataValue);
 }
