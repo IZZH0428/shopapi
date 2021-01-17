@@ -11,7 +11,7 @@ import java.util.List;
 public interface DataValueDao {
     @Select("select * from t_datavalue where attId = #{attId} and isDel = 0")
     List<DataValue> getDataByAttId(Integer attId);
-    @Insert("insert into t_datavalue (value,valueCH,attId) value (#{value},#{valueCH},#{attId})")
+    @Insert("insert into t_datavalue (value,valueCH,attId isDel) value (#{value},#{valueCH},#{attId} #{isDel})")
     void add(DataValue dataValue);
     @Select("select * from t_datavalue where id = #{id}")
     DataValue getDataById(Integer id);
