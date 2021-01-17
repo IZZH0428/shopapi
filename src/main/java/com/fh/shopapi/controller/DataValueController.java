@@ -71,4 +71,18 @@ public class DataValueController {
           dataValues.update(dataValue);
           return ReponseData.success(null);
       }
+        /*   1    删除
+    路径   http://localhost:8080/api/value/del
+    Post请求
+   参数:  id
+    返回值
+        status": 200,
+        "info": "处理成功",
+        "data":
+        */
+        @PostMapping("del")
+         public ReponseData del(Integer id){
+            dataValues.del(id);
+            return ReponseData.success(null);
+        }
 }

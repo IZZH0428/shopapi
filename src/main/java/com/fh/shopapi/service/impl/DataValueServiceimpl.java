@@ -32,4 +32,9 @@ public class DataValueServiceimpl implements DataValueService {
     public void update(DataValue dataValue) {
         valueDao.update(dataValue);
     }
+
+    @Override
+    public void del(Integer id) {
+        valueDao.del(id);
+    }
 }

@@ -14,4 +14,6 @@ public interface DataValueService {
     DataValue getDataById(Integer id);
 
     void update(DataValue dataValue);
+
+    void del(Integer id);
 }

@@ -1,6 +1,7 @@
 package com.fh.shopapi.dao;
 
 import com.fh.shopapi.entity.po.DataValue;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -16,4 +17,6 @@ public interface DataValueDao {
     DataValue getDataById(Integer id);
     @Update("update t_datavalue set value=#{value},valueCH=#{valueCH} where id=#{id} ")
     void update(DataValue dataValue);
+    @Delete("delete from t_datavalue where id =#{id}")
+    void del(Integer id);
 }
