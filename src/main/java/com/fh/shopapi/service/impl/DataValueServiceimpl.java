@@ -6,6 +6,7 @@ import com.fh.shopapi.service.DataValueService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class DataValueServiceimpl implements DataValueService {
@@ -13,7 +14,17 @@ public class DataValueServiceimpl implements DataValueService {
     private DataValueDao valueDao;
 
     @Override
-    public DataValue getDataByAttId(Integer attId) {
+    public List<DataValue> getDataByAttId(Integer attId) {
         return valueDao.getDataByAttId(attId);
+    }
+
+    @Override
+    public void add(DataValue dataValue) {
+        valueDao.add(dataValue);
+    }
+
+    @Override
+    public DataValue getDataById(Integer id) {
+        return valueDao.getDataById(id);
     }
 }

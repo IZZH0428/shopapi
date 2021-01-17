@@ -4,19 +4,17 @@ import com.fh.shopapi.entity.po.DataValue;
 import com.fh.shopapi.entity.vo.ReponseData;
 import com.fh.shopapi.service.DataValueService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @CrossOrigin
 @RequestMapping("api/value/")
 public class DataValueController {
     @Resource
-    private DataValueService dataValue;
+    private DataValueService dataValues;
      /*   1    查询
     路径   http://localhost:8080/api/value/getDataByAttId
     get请求
@@ -28,7 +26,35 @@ public class DataValueController {
         */
      @GetMapping("getDataByAttId")
      public ReponseData getDataByAttId(Integer attId){
-         DataValue rs =dataValue.getDataByAttId(attId);
+         List<DataValue> rs =dataValues.getDataByAttId(attId);
          return ReponseData.success(rs);
      }
+      /*   1    新增
+    路径   http://localhost:8080/api/value/add
+    post请求
+   参数:value valueCH attId
+    返回值
+        status": 200,
+        "info": "处理成功",
+        "data":
+        */
+      @PostMapping("add")
+      public ReponseData add(DataValue dataValue){
+          dataValues.add(dataValue);
+          return ReponseData.success(null);
+      }
+      /*   1    回显
+    路径   http://localhost:8080/api/value/getDataById
+    get请求
+   参数:value valueCH attId
+    返回值
+        status": 200,
+        "info": "处理成功",
+        "data":
+        */
+      @GetMapping("getDataById")
+    public ReponseData getDataById(Integer id){
+          DataValue rs =dataValues.getDataById(id);
+          return  ReponseData.success(rs);
+      }
 }
