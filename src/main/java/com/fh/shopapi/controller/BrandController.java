@@ -23,7 +23,7 @@ import java.util.UUID;
 public class BrandController {
     @Resource
     private BrandService brandService;
-    /*   1    查询所有的分类数据
+    /*   1    查询所有的品牌数据（分页）
     路径   http://localhost:8080/api/brand/getData
     get请求
    参数:limit(每页条数) page（当前页）
@@ -122,6 +122,21 @@ public class BrandController {
         //存储路径
         newName="imgs/"+newName;
         return ReponseData.success(OssFileUtils_ZZH.uploadFile(img.getInputStream(),newName));
+    }
+    /*   1    查询所有的品牌数据
+   路径   http://localhost:8080/api/brand/getAllData
+   get请求
+  参数:limit(每页条数) page（当前页）
+   返回值
+        "code": 0,
+       "msg": "处理成功",
+       "count": ,
+       "data": []
+       */
+    @GetMapping("getAllData")
+    public  ReponseData getAllData(){
+        List<Brand> rs = brandService.getAllData();
+        return ReponseData.success(rs);
     }
 
 }

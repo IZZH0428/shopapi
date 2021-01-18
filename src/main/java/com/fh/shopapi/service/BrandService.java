@@ -17,4 +17,6 @@ public interface BrandService {
     void update(Brand brand);
 
     void del(Brand brand);
+
+    List<Brand> getAllData();
 }

@@ -28,4 +28,6 @@ public interface BrandDao {
     void update(Brand brand);
     @Update("update t_brand set isdel =#{isdel},updateDate=#{updateDate} where id=#{id}")
     void del(Brand brand);
+    @Select("select * from t_brand where isdel =0")
+    List<Brand> getAllData();
 }

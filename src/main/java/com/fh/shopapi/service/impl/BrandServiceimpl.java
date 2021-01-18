@@ -54,5 +54,10 @@ public class BrandServiceimpl implements BrandService {
         brandDao.del(brand);
     }
 
+    @Override
+    public List<Brand> getAllData() {
+        return brandDao.getAllData();
+    }
+
 
 }
