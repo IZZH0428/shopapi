@@ -54,4 +54,14 @@ public class ShopDataServiceimpl implements ShopDataService {
     public ShopData queryByid(Integer id) {
         return shopDataDao.queryByid(id);
     }
+
+    @Override
+    public List<ShopData> getAllData() {
+        return shopDataDao.getAllData();
+    }
+
+    @Override
+    public List<ShopData> getDataByTypeId(Integer typeId) {
+        return shopDataDao.getDataByTypeId(typeId);
+    }
 }

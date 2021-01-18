@@ -30,4 +30,8 @@ public interface ShopDataDao {
     void del(ShopData shopData);
     @Select("select * from t_data where id=#{id}")
     ShopData queryByid(Integer id);
+    @Select("select * from t_data where isdel =0 ")
+    List<ShopData> getAllData();
+    @Select("select * from t_data where isdel =0 and typeId =#{typeId} ")
+    List<ShopData> getDataByTypeId(Integer typeId);
 }

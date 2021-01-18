@@ -8,6 +8,7 @@ import com.fh.shopapi.service.ShopDataService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/shopData/")
@@ -15,7 +16,7 @@ import javax.annotation.Resource;
 public class ShopDataController {
     @Resource
     private ShopDataService shopDataService;
-    /*   1    查询所有的分类数据
+    /*   1    查询所有的属性数据
     路径   http://localhost:8080/api/shopData/getData
     get请求
    参数:limit(每页条数) page（当前页）
@@ -96,5 +97,35 @@ public class ShopDataController {
     public ReponseData queryByid(Integer id){
         ShopData shopData  =shopDataService.queryByid(id);
         return ReponseData.success(shopData);
+    }
+    /*   1    查询所有的属性数据（分页）
+   路径   http://localhost:8080/api/shopData/getAllData
+   get请求
+  参数:limit(每页条数) page（当前页）
+   返回值
+        "code": 0,
+       "msg": "处理成功",
+       "count": ,
+       "data": [*]
+       */
+    @GetMapping("getAllData")
+    public  ReponseData getAllData(){
+        List<ShopData> rs = shopDataService.getAllData();
+        return ReponseData.success(rs);
+    }
+    /*   1    查询所有的属性数据（分页）
+   路径   http://localhost:8080/api/shopData/getAllData
+   get请求
+  参数:limit(每页条数) page（当前页）
+   返回值
+        "code": 0,
+       "msg": "处理成功",
+       "count": ,
+       "data": [*]
+       */
+    @GetMapping("getDataByTypeId")
+    public  ReponseData getDataByTypeId(Integer typeId){
+        List<ShopData> rs = shopDataService.getDataByTypeId(typeId);
+        return ReponseData.success(rs);
     }
 }
