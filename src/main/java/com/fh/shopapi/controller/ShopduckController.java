@@ -1,5 +1,6 @@
 package com.fh.shopapi.controller;
 
+import com.fh.shopapi.entity.po.ShopAttr;
 import com.fh.shopapi.entity.po.Shopduck;
 import com.fh.shopapi.entity.vo.ReponseData;
 import com.fh.shopapi.service.ShopduckService;
@@ -31,4 +32,26 @@ public class ShopduckController {
         service.add(shopduck);
         return ReponseData.success(null);
     }
+       /*      修改
+    路径   http://localhost:8080/api/duck/update
+    post请求
+   参数:name,title,bandId,typeId,productdecs,imgPath,stocks,sortNum,price id
+    返回值"
+    status": 200,
+    "info": "处理成功",
+    "data": null
+        */
+       @PostMapping("update")
+       public ReponseData update(Shopduck shopduck){
+           service.update(shopduck);
+           return ReponseData.success(null);
+       }
+
+    @PostMapping("addvalue")
+    public ReponseData addvalue(ShopAttr shopAttr){
+
+        service.addvalue(shopAttr);
+        return ReponseData.success(null);
+    }
+
 }
