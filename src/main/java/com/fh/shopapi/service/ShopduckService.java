@@ -4,9 +4,8 @@ import com.fh.shopapi.entity.po.ShopAttr;
 import com.fh.shopapi.entity.po.Shopduck;
 
 public interface ShopduckService {
-    void add(Shopduck shopduck);
+    Integer add(Shopduck shopduck,String sku);
 
     void update(Shopduck shopduck);
 
-    void addvalue(ShopAttr shopAttr);
 }
