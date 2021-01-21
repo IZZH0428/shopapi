@@ -2,12 +2,11 @@ package com.fh.shopapi.controller;
 
 import com.fh.shopapi.entity.po.ShopAttr;
 import com.fh.shopapi.entity.po.Shopduck;
+import com.fh.shopapi.entity.vo.PageParam3;
+import com.fh.shopapi.entity.vo.PageResult;
 import com.fh.shopapi.entity.vo.ReponseData;
 import com.fh.shopapi.service.ShopduckService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -46,7 +45,49 @@ public class ShopduckController {
            service.update(shopduck);
            return ReponseData.success(null);
        }
-
-
-
+    /*   1    查询所有的品牌数据（分页）
+    路径   http://localhost:8080/api/duck/getData
+    get请求
+   参数:limit(每页条数) page（当前页）
+    返回值
+         "code": 0,
+        "msg": "处理成功",
+        "count": ,
+        "data": []
+        */
+    @GetMapping("getData")
+    public PageResult<Shopduck> getData(PageParam3 param){
+        PageResult<Shopduck> rs = service.getData(param);
+        return rs;
+    }
+/*   1    查询所有的品牌数据（分页）
+    路径   http://localhost:8080/api/duck/queryDuckById
+    get请求
+   参数:limit(每页条数) page（当前页）
+    返回值
+         "code": 0,
+        "msg": "处理成功",
+        "count": ,
+        "data": []
+        */
+    @RequestMapping("queryDuckById")
+    public ReponseData queryDuckById(Integer id){
+        Shopduck rs = service.queryDuckById(id);
+        return ReponseData.success(rs);
+    }
+    /*   1    查询所有的品牌数据（分页）
+        路径   http://localhost:8080/api/duck/del
+        post请求
+       参数:id
+        返回值
+             "code": 0,
+            "msg": "处理成功",
+            "count": ,
+            "data": []
+            */
+    @PostMapping("del")
+    public ReponseData del(Integer id){
+            service.del(id);
+        return ReponseData.success(null);
+    }
 }

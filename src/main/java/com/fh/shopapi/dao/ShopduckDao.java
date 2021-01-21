@@ -2,8 +2,11 @@ package com.fh.shopapi.dao;
 
 import com.fh.shopapi.entity.po.ShopAttr;
 import com.fh.shopapi.entity.po.Shopduck;
+import com.fh.shopapi.entity.vo.PageParam3;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -15,7 +18,9 @@ public interface ShopduckDao {
             " (#{name},#{title},#{bandId},#{typeId},#{productdecs},#{imgPath},#{stocks},#{sortNum},#{createDate},#{author},#{isDel},#{price})")
     @Options(useGeneratedKeys = true,keyProperty ="id",keyColumn = "id")
     void add(Shopduck shopduck);
-
+    @Update("update  t_shopduck set name=#{name},title=#{title}," +
+            "bandId=#{bandId},productdecs=#{productdecs},imgPath=#{imgPath},stocks=#{stocks},sortNum=#{sortNum}" +
+            ",updateDate=#{updateDate},price=#{price}")
     void update(Shopduck shopduck);
 
     @Insert("<script>" +
@@ -26,4 +31,16 @@ public interface ShopduckDao {
             "</foreach>" +
             "</script>")
     void addvalue(List<ShopAttr> attrList);
+    @Select("<script>  select count(1) from t_shopduck where isDel =0" +
+            " <if test='name != null and name != &quot;%null%&quot;'>  and name  like #{name}</if>" +
+            "  </script>")
+    Long queryCount(PageParam3 param);
+    @Select("<script>  select * from t_shopduck where isDel =0" +
+            " <if test='name != null and name != &quot;%null%&quot;'>  and name  like #{name}</if>" +
+            " limit #{startIndex},#{limit} </script>")
+    List<Shopduck> queryDateByPage(PageParam3 param);
+    @Select(" select * from t_shopduck where id =#{id}")
+    Shopduck queryDuckById(Integer id);
+    @Update("update  t_shopduck set isDel=1 where id=#{id}")
+    void del(Integer id);
 }
