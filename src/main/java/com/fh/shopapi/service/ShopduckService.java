@@ -15,4 +15,6 @@ public interface ShopduckService {
     Shopduck queryDuckById(Integer id);
 
     void del(Integer id);
+
+    void updateData(Shopduck shopduck,String sku);
 }

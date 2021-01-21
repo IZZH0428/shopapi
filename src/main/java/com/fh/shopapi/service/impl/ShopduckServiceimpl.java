@@ -31,15 +31,17 @@ public class ShopduckServiceimpl implements ShopduckService {
     @Transactional
     public Integer add(Shopduck shopduck,String sku) {
         List<ShopAttr> attrList = new ArrayList<>();
-        List<Object> list = JSONObject.parseArray(sku);
-        for (int i = 0; i <list.size() ; i++) {
-            ShopAttr rs =  JSONObject.parseObject(String.valueOf(list.get(i)),ShopAttr.class);
-            attrList.add(rs);
-        }
-        shopduckDao.addvalue(attrList);
         shopduck.setCreateDate(new Date());
         shopduck.setAuthor("test");
         shopduckDao.add(shopduck);
+        List<Object> list = JSONObject.parseArray(sku);
+        for (int i = 0; i <list.size() ; i++) {
+            ShopAttr rs =  JSONObject.parseObject(String.valueOf(list.get(i)),ShopAttr.class);
+            rs.setProId(shopduck.getId());
+            attrList.add(rs);
+        }
+        shopduckDao.addvalue(attrList);
+
         return shopduck.getId();
     }
 
@@ -69,6 +71,19 @@ public class ShopduckServiceimpl implements ShopduckService {
     @Override
     public void del(Integer id) {
         shopduckDao.del(id);
+    }
+
+    @Override
+    public void updateData(Shopduck shopduck,String sku) {
+        List<ShopAttr> attrList = new ArrayList<>();
+        List<Object> list = JSONObject.parseArray(sku);
+        for (int i = 0; i <list.size() ; i++) {
+            ShopAttr rs =  JSONObject.parseObject(String.valueOf(list.get(i)),ShopAttr.class);
+            rs.setProId(shopduck.getId());
+            attrList.add(rs);
+        }
+        shopduckDao.deleteDataByProId(shopduck.getId());
+        shopduckDao.addvalue(attrList);
     }
 
 

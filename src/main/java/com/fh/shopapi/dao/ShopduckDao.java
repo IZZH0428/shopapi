@@ -3,10 +3,7 @@ package com.fh.shopapi.dao;
 import com.fh.shopapi.entity.po.ShopAttr;
 import com.fh.shopapi.entity.po.Shopduck;
 import com.fh.shopapi.entity.vo.PageParam3;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -43,4 +40,6 @@ public interface ShopduckDao {
     Shopduck queryDuckById(Integer id);
     @Update("update  t_shopduck set isDel=1 where id=#{id}")
     void del(Integer id);
+    @Delete("delete from t_shopattr where proId =#{id}")
+    void deleteDataByProId(Integer id);
 }
