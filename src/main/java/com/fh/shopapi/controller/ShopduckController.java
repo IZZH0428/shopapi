@@ -9,6 +9,7 @@ import com.fh.shopapi.service.ShopduckService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/duck")
@@ -104,4 +105,20 @@ public class ShopduckController {
          service.updateData(shopduck,sku);
          return ReponseData.success(null);
      }
+
+     /*      修改属性
+    路径   http://localhost:8080/api/duck/queryshopatt
+    post请求
+   参数: id
+    返回值"
+    status": 200,
+    "info": "处理成功",
+    "data": null
+        */
+     @RequestMapping("queryshopatt")
+     public ReponseData queryshopatt(Integer id){
+         List<ShopAttr> rs = service.queryshopatt(id);
+         return ReponseData.success(rs);
+     }
+
 }

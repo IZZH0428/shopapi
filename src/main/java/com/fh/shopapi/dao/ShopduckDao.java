@@ -17,7 +17,7 @@ public interface ShopduckDao {
     void add(Shopduck shopduck);
     @Update("update  t_shopduck set name=#{name},title=#{title}," +
             "bandId=#{bandId},productdecs=#{productdecs},imgPath=#{imgPath},stocks=#{stocks},sortNum=#{sortNum}" +
-            ",updateDate=#{updateDate},price=#{price}")
+            ",updateDate=#{updateDate},price=#{price} where id=#{id}")
     void update(Shopduck shopduck);
 
     @Insert("<script>" +
@@ -34,7 +34,7 @@ public interface ShopduckDao {
     Long queryCount(PageParam3 param);
     @Select("<script>  select * from t_shopduck where isDel =0" +
             " <if test='name != null and name != &quot;%null%&quot;'>  and name  like #{name}</if>" +
-            " limit #{startIndex},#{limit} </script>")
+            " order by id desc limit #{startIndex},#{limit} </script>")
     List<Shopduck> queryDateByPage(PageParam3 param);
     @Select(" select * from t_shopduck where id =#{id}")
     Shopduck queryDuckById(Integer id);
@@ -42,4 +42,6 @@ public interface ShopduckDao {
     void del(Integer id);
     @Delete("delete from t_shopattr where proId =#{id}")
     void deleteDataByProId(Integer id);
+    @Select("select * from t_shopattr where proId =#{id}")
+    List<ShopAttr> queryshopatt(Integer id);
 }

@@ -114,7 +114,7 @@ public class ShopDataController {
         return ReponseData.success(rs);
     }
     /*   1    查询所有的属性数据（分页）
-   路径   http://localhost:8080/api/shopData/getAllData
+   路径   http://localhost:8080/api/shopData/getDataByTypeId
    get请求
   参数:limit(每页条数) page（当前页）
    返回值

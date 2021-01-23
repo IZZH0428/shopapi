@@ -5,6 +5,8 @@ import com.fh.shopapi.entity.po.Shopduck;
 import com.fh.shopapi.entity.vo.PageParam3;
 import com.fh.shopapi.entity.vo.PageResult;
 
+import java.util.List;
+
 public interface ShopduckService {
     Integer add(Shopduck shopduck,String sku);
 
@@ -17,4 +19,6 @@ public interface ShopduckService {
     void del(Integer id);
 
     void updateData(Shopduck shopduck,String sku);
+
+    List<ShopAttr> queryshopatt(Integer id);
 }

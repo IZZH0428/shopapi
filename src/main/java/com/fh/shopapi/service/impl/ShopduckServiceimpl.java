@@ -86,5 +86,10 @@ public class ShopduckServiceimpl implements ShopduckService {
         shopduckDao.addvalue(attrList);
     }
 
+    @Override
+    public List<ShopAttr> queryshopatt(Integer id) {
+        return shopduckDao.queryshopatt(id);
+    }
+
 
 }
