@@ -6,6 +6,7 @@ import com.fh.shopapi.service.LoginService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 @Service
 public class LoginServiceimpl implements LoginService {
@@ -16,5 +17,11 @@ public class LoginServiceimpl implements LoginService {
     public User queryUserByname(String name) {
         User user =loginDao.queryUserByname(name);
         return user;
+    }
+
+    @Override
+    public void addUser(User user) {
+        user.setCreateDate(new Date());
+        loginDao.addUser(user);
     }
 }
